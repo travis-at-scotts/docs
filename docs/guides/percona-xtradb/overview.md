@@ -48,8 +48,12 @@ Percona XtraDB Cluster introduced PXC Strict Mode which can take the following f
 
 High availability means continue to function even in unexpected situation like a node crashing or network failure. In a 3 nodes Percona XtraDB Cluster setup, the cluster will continue to work normally if any of the nodes down at any point in time. It will be able to run fine. In a situation like this there may happen any of the following two:
 
-- SST
-- IST
+- `**State Snapshot Transfer (SST)**` happens when a new node joins the cluster and a full copy of existing data needs to be transferred to the new one.
+- `**Incremental State Transfer (IST)**` happens when a node goes down for a short period of time and comes back. Then it gets only the missing changes in data while it was down. An IST does this using some kind of caching on individual node.
+
+## Multi-Master Replication
+
+It means any node accepts writes in the cluster. Percona XtraDB Cluster provides such replication ensuring that the writes are consistent for nodes across the cluster. Of course it is different from the MySQL replication. You can see more [here](https://www.percona.com/doc/percona-xtradb-cluster/5.7/features/multimaster-replication.html).
 
 A cluster consists of nodes, where each node contains the same set of data synchronized across nodes. The recommended configuration is to have at least 3 nodes, but you can have 2 nodes as well. Each node is a regular MySQL Server instance (for example, Percona Server). You can convert an existing MySQL Server instance to a node and run the cluster using this node as a base. You can also detach any node from the cluster and use it as a regular MySQL Server instance.
 
