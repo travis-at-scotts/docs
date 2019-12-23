@@ -61,7 +61,7 @@ Here,
 - `.spec.replicas` specifies the number of required nodes.
 - `.spec.storage` specifies the StorageClass of PVC dynamically allocated to store data for this database. This storage spec will be passed to the StatefulSet created by KubeDB operator to run database pods. So, each members will have a pod of this storage configuration. You can specify any StorageClass available in your cluster with appropriate resource requests.
 
-KubeDB operator watches for `PerconaXtraDB` objects using Kubernetes API. When a `PerconaXtraDB` object is created, KubeDB operator will create a new StatefulSet and a ClusterIP Service with the matching `PerconaXtraDB` object name. KubeDB operator will also create a governing service for the StatefulSet with the name `<percona-xtradb-object-name>-gvr`. No MySQL specific RBAC permission is required in [RBAC enabled clusters](/docs/setup/install.md#using-yaml).
+KubeDB operator watches for `PerconaXtraDB` objects using Kubernetes API. When a `PerconaXtraDB` object is created, KubeDB operator will create a new StatefulSet and a ClusterIP Service with the matching `PerconaXtraDB` object name. KubeDB operator will also create a governing service for the StatefulSet with the name `<percona-xtradb-object-name>-gvr`. No PerconaXtraDB specific RBAC permission is required in [RBAC enabled clusters](/docs/setup/install.md#using-yaml).
 
 ```console
 $ kubedb describe px -n demo demo-cluster
