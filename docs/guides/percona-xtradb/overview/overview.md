@@ -1,4 +1,22 @@
-# About Percona XtraDB Cluster (PXC)
+---
+title: About Percona XtraDB
+menu:
+  docs_{{ .version }}:
+    identifier: px-about
+    name: About Percona XtraDB
+    parent: px-overview
+    weight: 10
+menu_name: docs_{{ .version }}
+section_menu_id: guides
+---
+
+# Introduction
+
+## Percona XtraDB (Percona Server)
+
+Percona Server is a drop-in replacement fork of the MySQL project developed by [Percona](https://www.percona.com/). Percona aims to provide better performance, and improvements on MySQL. They integrate [XtraDB](https://en.wikipedia.org/wiki/XtraDB) (backward compatible fork of `INNODB` storage engine) as the storage engine.
+
+## Percona XtraDB Cluster (PXC)
 
 Percona XtraDB Cluster is a fully open-source high-availability solution for MySQL. It is a integration of Percona Server and Galera replication library that enables a synchronous multi-master replication.
 
@@ -18,7 +36,7 @@ Here, we will talk about Percona XtraDB Cluster 5.7 (PXC-5.7).
 
 It is released as GA in Sep 2016. After then the team added lot of things to it, fixed bugs and at a regular interval they have been bringing new releases.
 
-## PXC Strict Mode (Cluster Safe Mode)
+### PXC Strict Mode (Cluster Safe Mode)
 
 It is also called cluster safe mode. The idea behind this is as following.
 
@@ -44,33 +62,31 @@ Percona XtraDB Cluster introduced PXC Strict Mode which can take the following f
 - **`MASTER`** is used in the case when the writes are restricted to only one master. The effects are same as `ENFORCING` except the locks.
 - **`DISABLED`** leaves the cluster as it is in 5.6. In `DISABLED` mode, there is no warning, no error messages and the cluster runs as normal.
 
-## High Availability
+### High Availability
 
 High availability means continue to function even in unexpected situation like a node crashing or network failure. In a 3 nodes Percona XtraDB Cluster setup, the cluster will continue to work normally if any of the nodes down at any point in time. It will be able to run fine. In a situation like this there may happen any of the following two:
 
-- `**State Snapshot Transfer (SST)**` happens when a new node joins the cluster and a full copy of existing data needs to be transferred to the new one.
-- `**Incremental State Transfer (IST)**` happens when a node goes down for a short period of time and comes back. Then it gets only the missing changes in data while it was down. An IST does this using some kind of caching on individual node.
+- **State Snapshot Transfer (SST)** happens when a new node joins the cluster and a full copy of existing data needs to be transferred to the new one.
+- **Incremental State Transfer (IST)** happens when a node goes down for a short period of time and comes back. Then it gets only the missing changes in data while it was down. An IST does this using some kind of caching on individual node.
 
-## Multi-Master Replication
+### Multi-Master Replication
 
 It means any node accepts writes in the cluster. Percona XtraDB Cluster provides such replication ensuring that the writes are consistent for nodes across the cluster. Of course it is different from the MySQL replication. You can see more [here](https://www.percona.com/doc/percona-xtradb-cluster/5.7/features/multimaster-replication.html).
 
-A cluster consists of nodes, where each node contains the same set of data synchronized across nodes. The recommended configuration is to have at least 3 nodes, but you can have 2 nodes as well. Each node is a regular MySQL Server instance (for example, Percona Server). You can convert an existing MySQL Server instance to a node and run the cluster using this node as a base. You can also detach any node from the cluster and use it as a regular MySQL Server instance.
+Following diagram shows such replication:
 
 ![cluster-diagram1](/docs/images/percona-xtradb/cluster-diagram1.png)
 
-## Benefits
+Image ref: https://www.percona.com/doc/percona-xtradb-cluster/LATEST/intro.html
 
-- When you execute a query, it is executed locally on the node. All data is available locally, no need for remote access.
-- No central management. You can loose any node at any point of time, and the cluster will continue to function without any data loss.
-- Good solution for scaling a read workload. You can put read queries to any of the nodes.
+### Benefits
 
-## Drawbacks
+- **XtraDB** is an improvement (backward compatible fork) of `INNODB` storage engine. Using XtraDB, it is possible to get  better performance and efficiency. It offers faster query response.
+- Percona server offers your application to have less downtime or slowdowns.
+- Percona has brought a drop-in replacement for MySQL with all usual characteristics of MySQL. So it is safe to use Percona Server instead of MySQL.
 
-- Overhead of provisioning new node. When you add a new node, it has to copy the full data set from one of existing nodes. If it is 100GB, it copies 100GB.
-- This can’t be used as an effective write scaling solution. There might be some improvements in write throughput when you run write traffic to 2 nodes versus all traffic to 1 node, but you can’t expect a lot. All writes still have to go on all nodes.
-- You have several duplicates of the data, for 3 nodes you have 3 duplicates.
+## Next Steps
 
-## Components
-
-Percona XtraDB Cluster is based on Percona Server running with the XtraDB storage engine. It uses the Galera library, which is an implementation of the write set replication (wsrep) API developed by Codership Oy. The default and recommended data transfer method is via Percona XtraBackup.
+- Detail concepts of [PerconaXtraDB object](/docs/concepts/databases/percona-xtradb.md).
+- [Quickstart PerconaXtraDB](/docs/guides/percona-xtradb/quickstart/quickstart.md) with KubeDB Operator.
+- Want to hack on KubeDB? Check our [contribution guidelines](/docs/CONTRIBUTING.md).

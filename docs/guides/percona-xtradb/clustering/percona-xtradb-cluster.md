@@ -1,3 +1,15 @@
+---
+title: Percona XtraDB Cluster Guide
+menu:
+  docs_{{ .version }}:
+    identifier: px-cluster-guide
+    name: Percona XtraDB Cluster Guide
+    parent: px-cluster
+    weight: 10
+menu_name: docs_{{ .version }}
+section_menu_id: guides
+---
+
 > New to KubeDB? Please start [here](/docs/concepts/README.md).
 
 # KubeDB - Percona XtraDB Cluster
@@ -52,7 +64,7 @@ spec:
 ```
 
 ```console
-$ kubedb create -f https://github.com/kubedb/docs/raw/{{< param "info.version" >}}/docs/examples/percona-xtradb/demo-1.yaml
+$ kubedb create -f https://github.com/kubedb/docs/raw/{{< param "info.version" >}}/docs/examples/percona-xtradb/demo-cluster.yaml
 perconaxtradb.kubedb.com/my-group created
 ```
 
@@ -588,6 +600,10 @@ namespace "demo" deleted
 
 ## Next Steps
 
+- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box CoreOS Prometheus Operator](/docs/guides/percona-xtradb/monitoring/using-coreos-prometheus-operator.md).
+- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box builtin-Prometheus](/docs/guides/percona-xtradb/monitoring/using-builtin-prometheus.md).
+- Use [private Docker registry](/docs/guides/percona-xtradb/private-registry/using-private-registry.md) to deploy PerconaXtraDB with KubeDB.
+- How to use [custom configuration](/docs/guides/percona-xtradb/configuration/using-custom-config.md).
 - Detail concepts of [PerconaXtraDB object](/docs/concepts/databases/percona-xtradb.md).
 - Detail concepts of [PerconaXtraDBVersion object](/docs/concepts/catalog/percona-xtradb.md).
 - Want to hack on KubeDB? Check our [contribution guidelines](/docs/CONTRIBUTING.md).

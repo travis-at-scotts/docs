@@ -1,10 +1,10 @@
 ---
-title: MySQL Quickstart
+title: PerconaXtraDB Quickstart Guide
 menu:
   docs_{{ .version }}:
-    identifier: my-quickstart-quickstart
-    name: Overview
-    parent: my-quickstart-mysql
+    identifier: px-quickstart-guide
+    name: PerconaXtraDB Quickstart Guide
+    parent: px-quickstart
     weight: 10
 menu_name: docs_{{ .version }}
 section_menu_id: guides
@@ -480,9 +480,11 @@ If you are just testing some basic functionalities, you might want to avoid addi
 
 ## Next Steps
 
-- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box CoreOS Prometheus Operator](/docs/guides/percona-xtradb/using-coreos-prometheus-operator.md).
-- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box builtin-Prometheus](/docs/guides/percona-xtradb/using-builtin-prometheus.md).
-- Use [private Docker registry](/docs/guides/percona-xtradb/using-private-registry.md) to deploy PerconaXtraDB with KubeDB.
+- How to run [PerconaXtraDB Cluster](/docs/guides/percona-xtradb/clustering/percona-xtradb-cluster.md).
+- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box CoreOS Prometheus Operator](/docs/guides/percona-xtradb/monitoring/using-coreos-prometheus-operator.md).
+- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box builtin-Prometheus](/docs/guides/percona-xtradb/monitoring/using-builtin-prometheus.md).
+- Use [private Docker registry](/docs/guides/percona-xtradb/private-registry/using-private-registry.md) to deploy PerconaXtraDB with KubeDB.
+- How to use [custom configuration](/docs/guides/percona-xtradb/configuration/using-custom-config.md).
 - Detail concepts of [PerconaXtraDB object](/docs/concepts/databases/percona-xtradb.md).
 - Detail concepts of [PerconaXtraDBVersion object](/docs/concepts/catalog/percona-xtradb.md).
 - Want to hack on KubeDB? Check our [contribution guidelines](/docs/CONTRIBUTING.md).

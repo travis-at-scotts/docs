@@ -1,3 +1,14 @@
+---
+title: Percona XtraDB using Private Registry Guide
+menu:
+  docs_{{ .version }}:
+    identifier: px-private-registry-guide
+    name: Private Registry Guide
+    parent: px-private-registry
+    weight: 10
+menu_name: docs_{{ .version }}
+---
+
 > New to KubeDB? Please start [here](/docs/concepts/README.md).
 
 # Deploy Percona XtraDB from private Docker registry
@@ -133,6 +144,8 @@ kubectl delete ns demo
 
 ## Next Steps
 
+- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box builtin-Prometheus](/docs/guides/percona-xtradb/monitoring/using-builtin-prometheus.md).
+- How to use [custom configuration](/docs/guides/percona-xtradb/configuration/using-custom-config.md).
 - Detail concepts of [PerconaXtraDB object](/docs/concepts/databases/percona-xtradb.md).
 - Detail concepts of [PerconaXtraDBVersion object](/docs/concepts/catalog/percona-xtradb.md).
 - Want to hack on KubeDB? Check our [contribution guidelines](/docs/CONTRIBUTING.md).

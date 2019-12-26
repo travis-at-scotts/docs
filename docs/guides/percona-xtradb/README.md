@@ -1,11 +1,11 @@
 ---
-title: Percona-XtraDB
+title: PerconaXtraDB
 menu:
   docs_{{ .version }}:
     identifier: readme-percona-xtradb
-    name: Percona-XtraDB
-    parent: percona-xtradb-guides
-    weight: 10
+    name: PerconaXtraDB
+    parent: px-percona-xtradb-guides
+    weight: 40
 menu_name: docs_{{ .version }}
 section_menu_id: guides
 url: /docs/{{ .version }}/guides/percona-xtradb/
@@ -15,7 +15,7 @@ aliases:
 
 > New to KubeDB? Please start [here](/docs/concepts/README.md).
 
-## Supported Percona-XtraDB Features
+## Supported PerconaXtraDB Features
 
 |                        Features                         | Availability |
 | ------------------------------------------------------- | :----------: |
@@ -30,63 +30,42 @@ aliases:
 | Builtin Prometheus Discovery                            |   &#10003;   |
 | Using CoreOS Prometheus Operator                        |   &#10003;   |
 
-## Life Cycle of a Percona-XtraDB Object
+## Life Cycle of a PerconaXtraDB Object
 
 <p align="center">
-  <img alt="lifecycle"  src="/docs/images/mysql/mysql-lifecycle.png" >
+  <img alt="lifecycle" src="/docs/images/percona-xtradb/Lifecycle_of_a_PerconaXtraDB.svg" >
 </p>
 
-## Supported MySQL Versions
+## Supported PerconaXtraDB Versions
 
-| KubeDB Version | MySQL:8.0 | MySQL:5.7 |
-| :------------: | :-------: | :-------: |
-| 0.1.0 - 0.7.0  | &#10007;  | &#10007;  |
-|     0.8.0      | &#10003;  | &#10003;  |
-|     0.9.0      | &#10003;  | &#10003;  |
-|     0.10.0     | &#10003;  | &#10003;  |
-|     0.11.0     | &#10003;  | &#10003;  |
-|     0.12.0     | &#10003;  | &#10003;  |
-|  v0.13.0-rc.0  | &#10003;  | &#10003;  |
+| KubeDB Version | PerconaXtraDB:5.7 | PerconaXtraDB:5.7-cluster |
+| :------------: | :---------------: | :-----------------------: |
+|  v0.13.0-rc.1  |      &#10003;     |         &#10003;          |
 
-## Supported MySQLVersion CRD
+## Supported PerconaXtraDBVersion CRD
 
 Here, &#10003; means supported and &#10007; means deprecated.
 
-|  NAME  | VERSION | KubeDB: 0.9.0 | KubeDB: 0.10.0 | KubeDB: 0.11.0 | KubeDB: 0.12.0 | KubeDB: v0.13.0-rc.0 |
-| :----: | :-----: | :-----------: | :------------: | :------------: | :------------: | :------------------: |
-|   5    |    5    |   &#10007;    |    &#10007;    |    &#10007;    |    &#10007;    |       &#10007;       |
-|  5.7   |   5.7   |   &#10007;    |    &#10007;    |    &#10007;    |    &#10007;    |       &#10007;       |
-|   8    |    8    |   &#10007;    |    &#10007;    |    &#10007;    |    &#10007;    |       &#10007;       |
-|  8.0   |   8.0   |   &#10007;    |    &#10007;    |    &#10007;    |    &#10007;    |       &#10007;       |
-|  5-v1  |    5    |   &#10003;    |    &#10007;    |    &#10007;    |    &#10007;    |       &#10007;       |
-| 5.7-v1 |   5.7   |   &#10003;    |    &#10003;    |    &#10007;    |    &#10003;    |       &#10003;       |
-| 5.7-v2 | 5.7.25  |   &#10007;    |    &#10007;    |    &#10007;    |    &#10003;    |       &#10003;       |
-| 5.7.25 | 5.7.25  |   &#10007;    |    &#10007;    |    &#10007;    |    &#10003;    |       &#10003;       |
-|  8-v1  |    8    |   &#10003;    |    &#10007;    |    &#10007;    |    &#10007;    |       &#10007;       |
-| 8.0-v1 |  8.0.3  |   &#10003;    |    &#10007;    |    &#10007;    |    &#10003;    |       &#10003;       |
-| 8.0-v2 | 8.0.14  |   &#10007;    |    &#10003;    |    &#10003;    |    &#10003;    |       &#10003;       |
-| 8.0.3  |  8.0.3  |   &#10007;    |    &#10003;    |    &#10003;    |    &#10003;    |       &#10003;       |
-| 8.0.14 | 8.0.14  |   &#10007;    |    &#10003;    |    &#10003;    |    &#10003;    |       &#10003;       |
+|    NAME     | VERSION | KubeDB: v0.13.0-rc.0 | KubeDB: v0.13.0-rc.1 |
+| :---------: | :-----: | :------------------: | :------------------: |
+|     5.7     |   5.7   |       &#10007;       |       &#10003;       |
+| 5.7-cluster |   5.7   |       &#10007;       |       &#10003;       |
 
 ## External tools dependency
 
 |                                      Tool                                      | Version |
 | :----------------------------------------------------------------------------: | :-----: |
 | [peer-finder](https://github.com/kubernetes/contrib/tree/master/peer-finder)   | latest  |
-|                 [osm](https://github.com/appscode/osm)                         |  0.9.1  |
 
 ## User Guide
 
-- [Quickstart MySQL](/docs/guides/mysql/quickstart/quickstart.md) with KubeDB Operator.
-- [Snapshot and Restore](/docs/guides/mysql/snapshot/backup-and-restore.md) process of MySQL databases using KubeDB.
-- Take [Scheduled Snapshot](/docs/guides/mysql/snapshot/scheduled-backup.md) of MySQL databases using KubeDB.
-- Initialize [MySQL with Script](/docs/guides/mysql/initialization/using-script.md).
-- Initialize [MySQL with Snapshot](/docs/guides/mysql/initialization/using-snapshot.md).
-- Monitor your MySQL database with KubeDB using [out-of-the-box CoreOS Prometheus Operator](/docs/guides/mysql/monitoring/using-coreos-prometheus-operator.md).
-- Monitor your MySQL database with KubeDB using [out-of-the-box builtin-Prometheus](/docs/guides/mysql/monitoring/using-builtin-prometheus.md).
-- Use [private Docker registry](/docs/guides/mysql/private-registry/using-private-registry.md) to deploy MySQL with KubeDB.
-- Use [kubedb cli](/docs/guides/mysql/cli/cli.md) to manage databases like kubectl for Kubernetes.
-- Detail concepts of [MySQL object](/docs/concepts/databases/mysql.md).
-- Detail concepts of [MySQLVersion object](/docs/concepts/catalog/mysql.md).
-- Detail concepts of [Snapshot object](/docs/concepts/snapshot.md).
+- [Overview](/docs/guides/percona-xtradb/overview/overview.md) of PerconaXtraDB.
+- [Quickstart PerconaXtraDB](/docs/guides/percona-xtradb/quickstart/quickstart.md) with KubeDB Operator.
+- How to run [PerconaXtraDB Cluster](/docs/guides/percona-xtradb/clustering/percona-xtradb-cluster.md).
+- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box CoreOS Prometheus Operator](/docs/guides/percona-xtradb/monitoring/using-coreos-prometheus-operator.md).
+- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box builtin-Prometheus](/docs/guides/percona-xtradb/monitoring/using-builtin-prometheus.md).
+- Use [private Docker registry](/docs/guides/percona-xtradb/private-registry/using-private-registry.md) to deploy PerconaXtraDB with KubeDB.
+- How to use [custom configuration](/docs/guides/percona-xtradb/configuration/using-custom-config.md).
+- Detail concepts of [PerconaXtraDB object](/docs/concepts/databases/percona-xtradb.md).
+- Detail concepts of [PerconaXtraDBVersion object](/docs/concepts/catalog/percona-xtradb.md).
 - Want to hack on KubeDB? Check our [contribution guidelines](/docs/CONTRIBUTING.md).

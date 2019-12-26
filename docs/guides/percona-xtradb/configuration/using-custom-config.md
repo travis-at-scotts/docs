@@ -1,13 +1,12 @@
 ---
-title: Run MySQL with Custom Configuration
+title: Run Percona XtraDB with Custom Configuration
 menu:
   docs_{{ .version }}:
-    identifier: my-custom-config-file
-    name: Using Config File
-    parent: my-custom-config
+    identifier: px-custom-config-guide
+    name: Custom Configuration Guide
+    parent: px-custom-config
     weight: 10
 menu_name: docs_{{ .version }}
-section_menu_id: guides
 ---
 
 > New to KubeDB? Please start [here](/docs/concepts/README.md).
@@ -190,10 +189,8 @@ If you would like to uninstall KubeDB operator, please follow the steps [here](/
 
 ## Next Steps
 
-- [Quickstart PerconaXtraDB](/docs/guides/percona-xtradb/quickstart.md) with KubeDB Operator.
-- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box CoreOS Prometheus Operator](/docs/guides/percona-xtradb/using-coreos-prometheus-operator.md).
-- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box builtin-Prometheus](/docs/guides/percona-xtradb/using-builtin-prometheus.md).
-- Use [private Docker registry](/docs/guides/percona-xtradb/using-private-registry.md) to deploy PerconaXtraDB with KubeDB.
+- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box builtin-Prometheus](/docs/guides/percona-xtradb/monitoring/using-builtin-prometheus.md).
+- Use [private Docker registry](/docs/guides/percona-xtradb/private-registry/using-private-registry.md) to deploy PerconaXtraDB with KubeDB.
 - Detail concepts of [PerconaXtraDB object](/docs/concepts/databases/percona-xtradb.md).
 - Detail concepts of [PerconaXtraDBVersion object](/docs/concepts/catalog/percona-xtradb.md).
 - Want to hack on KubeDB? Check our [contribution guidelines](/docs/CONTRIBUTING.md).

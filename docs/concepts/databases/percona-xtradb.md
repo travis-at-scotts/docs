@@ -1,10 +1,22 @@
+---
+title: PerconaXtraDB
+menu:
+  docs_{{ .version }}:
+    identifier: percona-xtradb-db
+    name: PerconaXtraDB
+    parent: databases
+    weight: 40
+menu_name: docs_{{ .version }}
+section_menu_id: concepts
+---
+
 > New to KubeDB? Please start [here](/docs/concepts/README.md).
 
 # PerconaXtraDB
 
 ## What is PerconaXtraDB
 
-`PerconaXtraDB` is a Kubernetes `Custom Resource Definitions` (CRD). It provides declarative configuration for [Percona XtraDB Cluster](https://www.percona.com/software/mysql-database/percona-xtradb-cluster) in a Kubernetes native way. You only need to describe the desired configuration in a `PerconaXtraDB` object, and the KubeDB operator will create Kubernetes objects in the desired state for you.
+`PerconaXtraDB` is a Kubernetes `Custom Resource Definitions` (CRD). It provides declarative configuration for standalone PerconaXtraDB ([Percona Server](https://www.percona.com/software/mysql-database/percona-server)) and [Percona XtraDB Cluster](https://www.percona.com/software/mysql-database/percona-xtradb-cluster) in a Kubernetes native way. You only need to describe the desired configuration in a `PerconaXtraDB` object, and the KubeDB operator will create Kubernetes objects in the desired state for you.
 
 ## PerconaXtraDB Spec
 
@@ -80,6 +92,7 @@ spec:
 `.spec.version` is a required field specifying the name of the [PerconaXtraDBVersion](/docs/concepts/catalog/percona-xtradb.md) object where the docker images are specified. Currently, when you install KubeDB, it creates the following `PerconaXtraDBVersion` object,
 
 - `5.7`
+- `5.7-cluster`
 
 ### .spec.replicas
 

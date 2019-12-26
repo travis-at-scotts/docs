@@ -1,3 +1,14 @@
+---
+title: Monitor Percona XtraDB using Builtin Prometheus Discovery
+menu:
+  docs_{{ .version }}:
+    identifier: px-monitoring-using-builtin-prometheus
+    name: Builtin Prometheus Discovery
+    parent: px-monitoring
+    weight: 10
+menu_name: docs_{{ .version }}
+---
+
 > New to KubeDB? Please start [here](/docs/concepts/README.md).
 
 # Monitoring PerconaXtraDB with builtin Prometheus
@@ -350,6 +361,9 @@ kubectl delete ns monitoring
 
 ## Next Steps
 
-- Monitor your PerconaXtraDB with KubeDB using [`out-of-the-box` CoreOS Prometheus Operator](/docs/guides/percona-xtradb/using-coreos-prometheus-operator.md).
-- Use [private Docker registry](/docs/guides/percona-xtradb/using-private-registry.md) to deploy PerconaXtraDB with KubeDB.
+- Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box CoreOS Prometheus Operator](/docs/guides/percona-xtradb/monitoring/using-coreos-prometheus-operator.md).
+- Use [private Docker registry](/docs/guides/percona-xtradb/private-registry/using-private-registry.md) to deploy PerconaXtraDB with KubeDB.
+- How to use [custom configuration](/docs/guides/percona-xtradb/configuration/using-custom-config.md).
+- Detail concepts of [PerconaXtraDB object](/docs/concepts/databases/percona-xtradb.md).
+- Detail concepts of [PerconaXtraDBVersion object](/docs/concepts/catalog/percona-xtradb.md).
 - Want to hack on KubeDB? Check our [contribution guidelines](/docs/CONTRIBUTING.md).
