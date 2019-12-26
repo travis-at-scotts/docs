@@ -146,6 +146,7 @@ kubectl delete ns demo
 
 - Monitor your PerconaXtraDB database with KubeDB using [out-of-the-box builtin-Prometheus](/docs/guides/percona-xtradb/monitoring/using-builtin-prometheus.md).
 - How to use [custom configuration](/docs/guides/percona-xtradb/configuration/using-custom-config.md).
+- Use Stash to [Backup PerconaXtraDB](/docs/guides/percona-xtradb/snapshot/stash.md).
 - Detail concepts of [PerconaXtraDB object](/docs/concepts/databases/percona-xtradb.md).
 - Detail concepts of [PerconaXtraDBVersion object](/docs/concepts/catalog/percona-xtradb.md).
 - Want to hack on KubeDB? Check our [contribution guidelines](/docs/CONTRIBUTING.md).
