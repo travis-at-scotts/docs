@@ -4,7 +4,7 @@ metadata:
   name: px-pvt-reg
   namespace: demo
 spec:
-  version: "5.7"
+  version: "5.7-cluster"
   replicas: 3
   storageType: Durable
   storage:

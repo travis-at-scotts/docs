@@ -35,7 +35,7 @@ KubeDB supports providing custom configuration for PerconaXtraDB. This tutorial 
 PerconaXtraDB allows to configure database via configuration file. The default configuration for PerconaXtraDB can be found in `/etc/my.cnf` file. When PerconaXtraDB starts, it looks for custom configuration files.
 
 - For standalone server, it looks into `/etc/my.cnf.d/`and `/etc/percona-server.conf.d/` directories. Here, KubeDB uses the later one `/etc/percona-server.conf.d/` for custom configurations. If configuration file exists, the `mysqld` will use combined startup setting from both `/etc/my.cnf` and `*.cnf` files in `/etc/percona-server.conf.d/` directory. This custom configuration will overwrite the existing default one.
-- For cluster, the `mysqld` process looks into `/etc/my.cnf.d/`, and `/etc/percona-xtradb-cluster.conf.d/` directories. Here, KubeDB uses the later one `/etc/percona-xtradb-cluster.conf.d/` for custom configurations. If configuration file exists, the `mysqld` will use combined startup setting from both `/etc/my.cnf` and `*.cnf` files in `/etc/percona-xtradb-cluster.conf.d/` directory. This custom configuration will overwrite the existing default one.
+- For cluster, the `mysqld` process looks into `/etc/my.cnf.d/`, and `/etc/percona-xtradb-cluster.conf.d/` directories. Here, KubeDB uses the later one `/etc/percona-xtradb-cluster.conf.d/` for custom configurations. If any configuration file exists, the `mysqld` will use combined startup settings from both `/etc/my.cnf` and `*.cnf` files in `/etc/percona-xtradb-cluster.conf.d/` directory. This custom configuration will overwrite the existing default one.
 
 At first, you have to create a config file with `.cnf` extension with your desired configuration. Then you have to put this file into a [volume](https://kubernetes.io/docs/concepts/storage/volumes/). You have to specify this volume  in `.spec.configSource` section while creating PerconaXtraDB object. KubeDB will mount this volume into the directory (specified above) of the database Pod.
 
@@ -46,7 +46,7 @@ In this tutorial, we will configure [max_connections](https://dev.mysql.com/doc/
 At first, let's create `my-config.cnf` file setting `max_connections` and `read_buffer_size` parameters.
 
 ```bash
-cat <<EOF > my-config.cnf
+$ cat <<EOF > my-config.cnf
 [mysqld]
 max_connections = 200
 read_buffer_size = 1048576
@@ -91,7 +91,7 @@ metadata:
 
 Now, create PerconaXtraDB object specifying `.spec.configSource` field.
 
-```console
+```bash
 $ kubectl apply -f https://github.com/kubedb/docs/raw/{{< param "info.version" >}}/docs/examples/percona-xtradb/custom-config.yaml
 perconaxtradb.kubedb.com/custom-px created
 ```
@@ -135,7 +135,7 @@ custom-px-0   1/1       Running   0          44s
 
 Check the Pod's log to see if the database is ready
 
-```console
+```bash
 $ kubectl logs -f -n demo custom-px-0
 ...
 2019-12-24T13:43:51.050366Z 0 [Note] mysqld: ready for connections.
@@ -146,7 +146,7 @@ Once we see `[Note] mysqld: ready for connections.` in the log, the database is 
 
 Now, we will check if the database has started with the custom configuration we have provided.
 
-```console
+```bash
 $ kubectl get secret -n demo  custom-px-auth -o jsonpath='{.data.password}'| base64 -d
 5ujF0R5wnUh5_gDk⏎
 
@@ -177,10 +177,8 @@ To cleanup the Kubernetes resources created by this tutorial, run:
 $ kubectl patch -n demo px/custom-px -p '{"spec":{"terminationPolicy":"WipeOut"}}' --type="merge"
 $ kubectl delete -n demo px/custom-px
 
-$ kubectl patch -n demo drmn/custom-px -p '{"spec":{"wipeOut":true}}' --type="merge"
-$ kubectl delete -n demo drmn/custom-px
-
 $ kubectl delete -n demo configmap my-custom-config
+$ rm ./my-config.cnf
 
 $ kubectl delete ns demo
 ```

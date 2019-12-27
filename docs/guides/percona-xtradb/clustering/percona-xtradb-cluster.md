@@ -48,7 +48,7 @@ metadata:
   name: demo-cluster
   namespace: demo
 spec:
-  version: "5.7"
+  version: "5.7-cluster"
   replicas: 3
   storageType: Durable
   storage:
@@ -120,7 +120,7 @@ Spec:
   Termination Policy:    WipeOut
   Update Strategy:
     Type:   RollingUpdate
-  Version:  5.7
+  Version:  5.7-cluster
 Status:
   Observed Generation:  2$4213139756412538772
   Phase:                Running
@@ -201,7 +201,7 @@ spec:
   terminationPolicy: WipeOut
   updateStrategy:
     type: RollingUpdate
-  version: "5.7"
+  version: "5.7-cluster"
 status:
   observedGeneration: 2$4213139756412538772
   phase: Running

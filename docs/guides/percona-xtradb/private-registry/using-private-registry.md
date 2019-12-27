@@ -27,8 +27,9 @@ KubeDB operator supports using private Docker registry. This tutorial will show 
 
   ```bash
   $ kubectl get perconaxtradbversions -o=custom-columns=NAME:.metadata.name,VERSION:.spec.version,DB_IMAGE:.spec.db.image,EXPORTER_IMAGE:.spec.exporter.image,DEPRECATED:.spec.deprecated
-  NAME   VERSION   DB_IMAGE                            EXPORTER_IMAGE                   DEPRECATED
-  5.7    5.7       kubedb/percona-xtradb-cluster:5.7   kubedb/mysqld-exporter:v0.11.0   <none>
+  NAME          VERSION   DB_IMAGE                            EXPORTER_IMAGE                   DEPRECATED
+  5.7           5.7       kubedb/percona:5.7                  kubedb/mysqld-exporter:v0.11.0   <none>
+  5.7-cluster   5.7       kubedb/percona-xtradb-cluster:5.7   kubedb/mysqld-exporter:v0.11.0   <none>
   ```
 
   Docker hub repositories:
@@ -43,7 +44,7 @@ KubeDB operator supports using private Docker registry. This tutorial will show 
   apiVersion: catalog.kubedb.com/v1alpha1
   kind: PerconaXtraDBVersion
   metadata:
-    name: "5.7"
+    name: "5.7-cluster"
     labels:
       app: kubedb
   spec:
@@ -96,7 +97,7 @@ metadata:
   name: px-pvt-reg
   namespace: demo
 spec:
-  version: "5.7"
+  version: "5.7-cluster"
   replicas: 3
   storageType: Durable
   storage:
